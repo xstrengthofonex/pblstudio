@@ -1,0 +1,68 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/webtoons">Webtoons</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Publish New Webtoon</li>
+        </ol>
+    </nav>
+
+    <h3 class="text-center">Publish New Webtoon</h3>
+    <div class="form-section">
+        {% if errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for error in errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            <div class="form-group">
+                <label for="author">Author</label><br>
+                <input class="form-control" id="author" type="text" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label><br>
+                <input class="form-control" id="title" type="text" name="title" required>
+            </div>
+            <fieldset class="form-group">
+                <legend>Page URLs</legend>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">1</span>
+                    </div>
+                    <input class="form-control" type="url" name="page1">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">2</span>
+                    </div>
+                    <input class="form-control" type="url" name="page2">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">3</span>
+                    </div>
+                    <input class="form-control" type="url" name="page3">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">4</span>
+                    </div>
+                    <input class="form-control" type="url" name="page4">
+                </div>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">5</span>
+                    </div>
+                    <input class="form-control" type="url" name="page5">
+                </div>
+            </fieldset>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Publish">
+        </div>
+        </form>
+    </div>
+{% endblock %}

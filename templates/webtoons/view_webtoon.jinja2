@@ -1,0 +1,16 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/webtoons">Webtoons</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ webtoon.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="text-center">
+    {% for page in webtoon.pages %}
+        <img class="img-fluid" src="{{ page.url }}" alt="Webtoon Page">
+    {% endfor %}
+    </div>
+{% endblock %}

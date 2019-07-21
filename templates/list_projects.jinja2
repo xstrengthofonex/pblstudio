@@ -1,0 +1,12 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+    <h2 class="text-center">Projects</h2>
+    <ul class="list-group">
+        {% for project in projects %}
+            <li class="list-group-item text-center">
+                <a href="/{{project.slugline}}">{{ project.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
