@@ -141,7 +141,7 @@ class MongoRepository(ABC):
 
     def __init__(self):
         self.client = AsyncIOMotorClient(settings.DB_URI)
-        self.db = self.client["pblstudio_db"]
+        self.db = self.client.database
 
     async def add(self, entity: Entity) -> None:
         await self.db[self.collection_name].insert_one(entity.to_dict())
