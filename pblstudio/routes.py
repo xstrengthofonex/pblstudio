@@ -131,11 +131,6 @@ class ProjectsHandler:
         return dict(projects=projects)
 
 
-@template("home.jinja2")
-async def view_home(request: web.Request) -> dict:
-    return dict()
-
-
 class MongoRepository(ABC):
     collection_name = ""
 
@@ -185,8 +180,7 @@ async def setup_routes(app: web.Application) -> None:
     webtoons_handler = WebtoonsHandler(webtoon_repository)
 
     app.router.add_static("/static", settings.STATIC_DIR, append_version=True)
-    app.router.add_get("/", view_home)
-    app.router.add_get("/projects", projects_handler.list_projects)
+    app.router.add_get("/", projects_handler.list_projects)
     app.router.add_get("/webtoons", webtoons_handler.list_webtoons)
     app.router.add_get("/webtoons/new", webtoons_handler.new_webtoon)
     app.router.add_post("/webtoons/new", webtoons_handler.publish_webtoon)
