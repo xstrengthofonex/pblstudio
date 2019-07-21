@@ -140,7 +140,7 @@ class MongoRepository(ABC):
     collection_name = ""
 
     def __init__(self):
-        self.client = AsyncIOMotorClient()
+        self.client = AsyncIOMotorClient(settings.DB_URI)
         self.db = self.client["pblstudio_db"]
 
     async def add(self, entity: Entity) -> None:
